@@ -5,7 +5,6 @@ async function checkProjectId(req, res, next) {
   try {
     const projectId = await Projects.get(req.params.id);
     if (projectId) {
-      req.hub = projectId;
       next();
     } else {
       next({ status: 404, message: "no project with that id" });
