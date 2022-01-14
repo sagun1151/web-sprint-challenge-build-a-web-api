@@ -1,7 +1,7 @@
-const express = require('express');
+const express = require("express");
 
-const projectsRouter = require('./projects/projects-router.js');
-const actionsRouter = require('./actions/actions-router.js');
+const projectsRouter = require("./projects/projects-router.js");
+const actionsRouter = require("./actions/actions-router.js");
 
 const server = express();
 server.use(express.json());
@@ -11,18 +11,19 @@ server.use(express.json());
 // Build your projects router in /api/projects/projects-router.js
 // Do NOT `server.listen()` inside this file!
 
-server.use('/api/projects', projectsRouter);
-server.use('/api/actions', actionsRouter);
+server.use("/api/projects", projectsRouter);
+server.use("/api/actions", actionsRouter);
 
-server.get('/', (req, res) => {
-    res.send(`<h2Project api</h2>`);
-  });
+server.get("/", (req, res) => {
+  res.send(`<h2Project api</h2>`);
+});
 
-server.use((err, req, res, next)=> { // eslint-disable-line
-    console.log('did not work');
-    res.status(err.status || 500).json({
-      message: err.message,
-    });
+server.use((err, req, res, next) => {
+  // eslint-disable-line
+  console.log("did not work");
+  res.status(err.status || 500).json({
+    message: err.message,
   });
+});
 
 module.exports = server;

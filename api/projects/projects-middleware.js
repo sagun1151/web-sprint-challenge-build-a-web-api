@@ -17,10 +17,10 @@ async function checkProjectId(req, res, next) {
 async function checkInfoBody(req, res, next) {
   const { name, description, completed } = req.body;
   try {
-    if (!name || !description || typeof completed ==='undefined') {
+    if (!name || !description || typeof completed === "undefined") {
       next({ status: 400, message: "Requires both name and description" });
     } else {
-      req.update = {name, description, completed};
+      req.update = { name, description, completed };
       next();
     }
   } catch (err) {
